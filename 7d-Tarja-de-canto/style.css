@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+div, a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 68px;
+  background-color: rgb(92, 131, 204)
+}
+
+
+
+a {
+  text-decoration: none;
+  color: white;
+  width: 300px;
+  height: 50px;
+  text-shadow: 1px 1px 4px rgb(30, 30, 31);
+  border: 1px solid white;
+  font-family: Roboto;
+}
+
+.tarja {
+  transform: rotate(-45deg);
+  position: fixed;
+  left: -75px;
+  top: 40px;
+  box-shadow: 1px 1px 8px rgb(76, 75, 75);
+}

@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+#people {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#people .title {
+  font-size: 35px;
+  background-color: #4d8ec4
+}
+
+#people td, th {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+#people th {
+  background-color: #9bc5e7;
+  color: rgb(247, 245, 245);
+  font-size: 22px;
+}
+
+#people tr {
+  font-size: 17px;
+}
+
+
+
+#people tr:nth-child(even) {
+  background-color:#9bc5e7;
+}
+
+#people tr:nth-child(odd) {
+  background-color:#bfdcf7;
+}

@@ -1,0 +1,557 @@
+/* CSS na raiz do HTML para remover margin, padding e tamanhos do box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Adicionada fonte padrão para todo site. Adicionado overflow-x (excedente do eixo X/horizontal) para que seja escondido e não quebre 
+as margens de largura do site */
+body {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ------------------------------------------------------------------- HEADER ------------------------------------------------------------------- */
+
+/* Define a altura do cabeçalho, cor de fundo e cor da letra */
+header {   
+  height: 100px;
+  background-color: #000;
+  color: white;
+}
+
+/* Torna os itens (menu) do header flex, margin:auto -> centraliza no meio, 
+align-itms: center -> centraliza depois de torná-los flex, Estabelece largura e altura máximos */
+.header {  
+  max-width: 1140px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Define a largura máxima da div que contém a logo */
+.logo {
+  width: 100px;
+}
+
+/* Defina a largura/altura máximas da logo */
+.logoimg {
+  width: 80px;
+  height: 80px;
+}
+
+/* flex: 1 -> Uma vez que a logo divide espaço com o menu e sua altura e largura máxima foram pra definidas,
+esse comando fará com que o menu ocupe o resto do espaço disponível dentro da div que é uma area flex, com conteúdo justificados
+a partir do canto direito (flex-end) */
+.menu {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Remove o estilo das listas */
+.menu ul, 
+.menu li {
+  list-style: none;
+}
+
+/* Transforma o menu (que anteriormente estava na vertical) em um display flex,
+passando a ficar de forma  horizontal */
+.menu ul {
+  display: flex;
+}
+
+/* Define as propriedades do menu, uppercase para deixar tudo em maiúscula, padding para dar espaçamento entre os menus,
+altura para controlar o tamanho da div, display flex para modificar o display original (tags a recebem display inline),
+align-center para centrarlizar a posição dos itens e border-bottom para criar uma borda embaixo da opção de menu */
+.menu li a {
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid #000;
+}
+
+/* estabelece a modificação que ocorre ao levar o mouse até o menu específico */
+.menu li a:hover,
+.menu .active a {
+  border-bottom: 4px solid #b28756;
+  color: #ccc;
+}
+
+/* Ajustes para o botão do slide. Aqui ele é transformado em block para que possa ser estilizado de forma a se tornar
+este retângulo com bordas arredondadas. Também é removido o efeito de estilo da tag a */
+.button {
+  display: inline-block;
+  background-color: #B28756;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+/* ------------------------------------------------------------------- BANNER ------------------------------------------------------------------- */
+
+/* calc(vh-px) faz o calculo de 100vh (a totalidade de qualquer tela) menos o valor em pixel (100px) que foi pré-definido para o header,
+adiciona a imagem de fundo da área de banner, com a opção de cobrir toda a área disponível e focando a partir do bottom */
+.banner {
+  height: calc(100vh - 100px);
+  background-color: #333;
+  background-image: url('../img/bg3.jpg');
+  background-size: cover;
+  background-position: bottom;
+  overflow: hidden;
+}
+
+/* Aqui é definido em valor de tela o tamanho do banner que vai receber todos os sliders. Esse tamanho precisa ser multiplicado pelo largura dos sliders
+vezes o número de sliders. Da mesma forma, a altura de 100% para ocupar toda tela */
+.banner .sliders {
+  width:1000vw;
+  height: 100%;
+}
+
+/* Aqui é definido o tamanho de cada slider, adicionando um display: inline-block para que eles fiquem alinhados um ao lado do outro, 
+de forma que apenas o primeiro é mostrado na tela e os demais ficam 'invisiveis' fora da tela mas dentro do escopo do banner que guarda todos eles.
+Aqui também é aplicado um background preto com transparência para dar um efeito em relação ao BG original */
+.banner .slide {
+  width: 100vw;
+  height: 100%;
+  display: inline-block;
+  background-color: rgba(0 ,0, 0, 0.8);
+}
+/* Aqui é definido o comportamento dos slides dentro da area. São modificados para serem flex e alinhados em forma de coluna,
+reajustas para ficarem centralizados com align-items e justify-content e recebem a altura de 100% */
+.banner .sliderarea {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Ajustes para o h1 do slider */
+.banner h1 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+}
+
+/* Ajustes para o span do h1 do slider */
+.banner h1 span {
+  color:#b28756;
+  text-align: center;
+}
+
+/* Ajustes do h2 */
+.banner h2 {
+  text-transform: uppercase;
+  margin-top: 17px;
+}
+
+/* Aqui foram criados os circulos que ciclam entre os sliders. Para isso foram criadas 3 divs (uma para cada circulo) fora do escopo dos sliders.
+Ajustado a postura e modificada a posição para absolute para que as divs fiquem fixas na posição de acordo com o ajuste de margin-top
+Tornadas flex e centralizadas com align-items e justify-content */
+.banner .slider-pointers {
+  width: 100vw;
+  height: 20px;
+  position: absolute;
+  margin-top: -80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Aqui foram feitos os circulos, definindo seu tamanho/largado, adicionando uma borda e adicionando border-radius para transformar em
+pequenos circulos. O comando cursor: pointer; também foi utilizado para simular a interatividade dos marcadores */
+.banner .pointer {
+  width: 15px;
+  height: 15px;
+  border: 2px solid #b28756;
+  border-radius: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/* Linha para deixar uma das bolinhas simuladas como ativa */
+.banner .pointer.active {
+  background-color:#b28756;
+}
+
+/* ------------------------------------------------------------------- SECTION DEFAULT ------------------------------------------------------------------- */
+
+/* Definidas padding padrão superior/inferior para as áreas. Esta sessão é uma espécie de framework, visto que seu modelo será reutilizado
+para as demais partes do sites, adaptando as nuances de acordo com as especificidades de cada área */
+.default {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/* Define os valores para o titulo e descrição de título de cada área. Alinhas ao centro, todos em maiúsucla e com peso de fonte 600 */
+.default .section_title,
+.default .section_desc {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Ajusta especificamente o tamanho da fonte do título de cada área */
+.default .section_title {
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+/* Ajusta especificamente o tamanho, cor e margem da descrição de cada cada área */
+.default .section_desc {
+  font-size: 11px;
+  color: #ccc;
+  margin-top: 10px;
+  margin-bottom: 40px; 
+}
+
+/* Ajuste a largura máxima do body (o corpo que recebe a informações de cada área) de acordo com as diretrizes de largura do site
+utiliza margin: auto; para centralizar o conteúdo */
+.default .section_body {
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* Define a cor de background para as áreas default com tema 'light' */
+.default.light {
+  background-color: #F7F7F7;
+}
+
+/* Cor de título para as áreas com tema 'light' */
+.default.light .section_title,
+.default.light .section_body {
+  color: #000;
+}
+
+/* Defina a cor de background para as áreas default com tema 'dark' */
+.default.dark {
+  background-color: #000;
+}
+
+/* Cor de título para as áreas com tema 'dark' */
+.default.dark .section_title,
+.default.dark .section_body {
+  color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------- AREAS ESPECÍFICAS ------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------------- SERVIÇOS ------------------------------------------------------------------- */
+
+/* Define a forma de display da área, para que os itens fiquem alinhados */
+.section_aboutus {
+  display: flex;
+}
+
+/* Flex 1 para que a area de texto ocupe todo espaço restante em relação a imagem (que vai ter uma definição de largura pré definida)
+Um pouco de padding para dar respiro ao texto */
+.section_aboutus_left {
+  flex: 1;
+  padding-right: 40px;
+}
+
+/* Diretrizes para organizar tamanho do texto, espaçamento entre linhas e alinhamento */
+.section_aboutus_left p {
+  font-size: 14px;
+  line-height: 25px;
+  text-align: justify;
+}
+
+/* Define a largura máxima da aréa da foto e seu alinhamento */
+.section_aboutus_right {
+  width: 500px;
+  text-align: center;
+}
+
+/* Define a largura máxima da foto e adiciona o sombreamento atrás */
+.section_aboutus_right img {
+  width: 480px;
+  box-shadow: 0px 5px 10px rgb(168, 167, 167);
+  
+}
+
+/* Div que engloba toda área de serviços e recebe display flex para poder ser organizada */
+.section_services {
+  display: flex;
+}
+
+/* Area de cada serviço, recebe flex 1 para que as 4 divs sejam divididas de forma semelhante, text-align center para centralizar o conteúdo
+padding para espaçamento entre as áreas e borda para separa uma área da outra */
+.section_service {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #333;
+  padding: 15px;
+}
+
+/* Coloca borda na esquerda do primeiro filho do service */
+.section_service:first-child {
+  border-left: 1px solid #333;
+}
+
+/* Definições para o titulo (h4) */
+.section_service h4 {
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 17px;
+}
+
+/* Definições para o text (p) */
+.section_service p {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #999;
+}
+
+/* ------------------------------------------------------------------- NOSSO PROJETO ------------------------------------------------------------------- */
+
+/* Define a área de projetos. Recebendo display flex, e ajustando com flex-direction e align-items para centralizar */
+.section_projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Define a div ao redor do menu, criando uma borda para toda área, ajustando background, ajustando o radius das bordas,
+recebendo display inline-block para alinhar itens um ao lado do outro e um padding lateral nas extremidades */
+.section_projects_filters {
+  border: 1px solid #CCC;
+  background-color: #EEE;
+  border-radius: 30px;
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+/* Remove o estilo da lista */
+.section_projects_filters ul,
+.section_projects_filters li {
+  list-style: none;
+}
+
+/* Transforma os itens internos da lista em blocos com inline-block, cria um padding entre eles, transforma tudo em maiúsucla,
+ajusta a fonte, cria uma borda a esquerda de cada item, cria uma borda invisível para evitar deslocamento de células quando recber o hover 
+e ajusta o cursor para pointer para simular uma área de click */
+.section_projects_filters li {
+  display: inline-block;
+  padding: 10px;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-left: 1px solid #CCC;
+  color: #555;
+  border-bottom: 3px solid #EEE;
+  cursor: pointer;
+}
+
+/* remove a borda esquerda excedente do primeiro filho gerada  pelo campo anterior  */
+.section_projects_filters li:first-child {
+  border-left: 0;
+}
+
+/* Define os efeitos de hover para receber uma borda laranja na parte inferior ao passar o cursor pela area */
+.section_projects_filters li:hover,
+.section_projects_filters li.active {
+  border-bottom: 3px solid #b28756;
+}
+
+/* Define o tamanho e proporção da área de fotos. display flex, flex wrap para permitir quebra de linhas e conteúdo justificado ao centro */
+.section_projects_fotos {
+  width: 100vw;
+  max-width: 1140px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* define a largura máxima da area de cada foto */
+.section_projects_foto {
+  width: 280px;
+}
+
+/* define a largura maxima da foto, considerando a margem recebida anteriormente e descontando na largura */
+.section_projects_fotoarea {
+  margin: 10px;
+  width: 260px;
+  height: 160px;
+}
+
+/* Herda os valores anteriores para definir o valor máximo da largura e altura da foto em si */
+.section_projects_fotoarea img {
+  width: inherit;
+  height: inherit;
+}
+
+/* Cria a opacidade que vai aparecer com o texto quando o mouse for passado pela foto através do hover. Herda altura e largura
+recebe display none para não ficar visível enquanto não for ativida com o mouse, position absolute para manter sua posição fixada em relação a imagem,
+justify, align center, e flex-direction para coluna para que fiquem uma ao lado da outra */
+.section_projects_fotoinfo {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: inherit;
+  height: inherit;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  flex-direction: column;
+}
+
+/* Define as propriedades do texto dentro das imagens */
+.section_projects_fotoinfo h5 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Torna visivel através do hover a camada anterior de opacidade com textos quando o mouse passar pelas imagens */
+.section_projects_fotoarea:hover .section_projects_fotoinfo {
+  display: flex;
+}
+
+
+/* ------------------------------------------------------------------- NOSSO TIME ------------------------------------------------------------------- */
+
+/* Adiciona a tag bg-team ao default dark para poder receber o background de imagem especifico. Cobrindo tela inteira e centralizad
+  Remove o padding top e bottom do framework padrão para evitar limitações na hora de adicionar a opacidade */
+.bg-team {
+  background-image: url('../img/bg3.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}
+
+/* Adiciona a opacidade através do rgba e recupera os valores de padding top e bottm que foram zerados na div maior que contém o bg e opacidade */
+.section_team_area {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.section_team {
+  overflow: hidden;
+  max-width: 880px;
+  margin: auto;
+}
+
+.section_team .sliders {
+  width:1000vw;
+}
+
+/* Aqui é definido o tamanho de cada slider, adicionando um display: inline-block para que eles fiquem alinhados um ao lado do outro, 
+de forma que apenas o primeiro é mostrado na tela e os demais ficam 'invisiveis' fora da tela mas dentro do escopo do banner que guarda todos eles.
+Aqui também é aplicado um background preto com transparência para dar um efeito em relação ao BG original */
+.section_team .slide {
+  width: 280px;
+  height: 100%;
+  min-height: 300px;
+  display: inline-block;
+  background-color: #FFF;
+  margin-right: 20px;
+}
+/* Aqui é definido o comportamento dos slides dentro da area. São modificados para serem flex e alinhados em forma de coluna,
+reajustas para ficarem centralizados com align-items e justify-content e recebem a altura de 100% */
+.section_team .sliderarea {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  padding: 30px;
+}
+
+.section_team_area .slider-pointers {
+  margin-top: 30px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Aqui foram feitos os circulos, definindo seu tamanho/largado, adicionando uma borda e adicionando border-radius para transformar em
+pequenos circulos. O comando cursor: pointer; também foi utilizado para simular a interatividade dos marcadores */
+.section_team_area .pointer {
+  width: 15px;
+  height: 15px;
+  border: 2px solid #b28756;
+  border-radius: 8px;
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/* Linha para deixar uma das bolinhas simuladas como ativa */
+.section_team_area .pointer.active {
+  background-color:#b28756;
+}
+
+.section_team_avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.section_team_name {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 17px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.section_team_role {
+  font-size: 14px;
+  color: rgb(102, 101, 101);
+  margin-top: 5px;
+}
+
+.section_team_social {
+  display: flex;
+  margin-top: 20px;
+  
+}
+
+.section_team_social a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 13px;
+  background-color: #ccc;
+  margin-right: 10px;
+}
+
+.section_team_social a:hover {
+  background-color: #b28756;
+}
+
+/* ------------------------------------------------------------------- NOSSO TIME ------------------------------------------------------------------- */
+
+.section_title {
+  font-size: 20px;
+}

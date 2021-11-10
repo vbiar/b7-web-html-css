@@ -1,0 +1,33 @@
+body {
+  background-image: url('assets/img/bg.jpg');
+}
+
+.input {
+  width: 400px;
+  height: 50px;
+  font-size: 27px;
+}
+
+.input::-webkit-input-placeholder { /* Webkit, Blink, Edge */
+  color: blue;
+}
+
+.input:-moz-placeholder { /* Firexfox 4 ao 18 */
+  color: blue;
+}
+
+.input::-moz-placeholder { /* Firexfox 19+ */
+  color: blue;
+}
+
+.input:ms-input-placeholder { /* IE 10 e 11 */
+  color: blue;
+}
+
+.input::ms-input-placeholder { /* Edge */
+  color: blue;
+}
+
+.input::placeholder { /* Mais atual (todos navegadores modernos) */
+  color: blue;
+}

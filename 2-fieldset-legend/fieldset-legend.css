@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 15px;
+  font-size: 25px;
+  font-family: Chilanka;
+  background-color: #ddd;
+  display:block;
+}
+
+.submit {
+  margin: 15px;
+  font-size: 18px;
+  font-family: Chilanka;
+}
+
+fieldset {
+  background-color: #eee;
+  margin-bottom: 20px;
+  border: 3px solid darkgrey;
+  border-radius: 10px;
+}
+
+legend {
+  background: linear-gradient(to bottom, #ddd, #eee) ;
+  padding: 5px;
+  text-shadow: 0px 2px 5px; 
+}
+

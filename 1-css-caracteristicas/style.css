@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  font-size: 20px;
+}
+
+.box-interno {
+  width: 10em;
+  height: 10em;
+  background-color: #999;
+}
